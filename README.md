@@ -6,7 +6,7 @@ The program allows users to:
 
 - Encrypt a message
 - Decrypt a message
-- Enter a custom shift value
+- Select a custom shift value
 
 The Caesar Cipher is one of the oldest and simplest encryption techniques where each letter in the text is shifted by a fixed number of positions in the alphabet.
 
