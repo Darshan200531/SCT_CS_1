@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caesar Cipher – Encrypt & Decrypt</title>
+  <meta name="description"
+    content="A beautifully designed Caesar Cipher tool to encrypt and decrypt text using a custom shift value. Fast, private, and runs entirely in your browser." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Ambient orbs -->
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <div class="page">
+
+    <!-- Theme toggle (fixed) -->
+    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
+      <span class="theme-icon" id="theme-icon">☀️</span>
+      <span class="theme-label" id="theme-label">Light Mode</span>
+    </button>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="badge"><span class="dot"></span> Classical Cryptography</div>
+      <h1>Caesar Cipher</h1>
+      <p class="subtitle">Encrypt & decrypt messages with a shift-based substitution cipher</p>
+    </header>
+
+    <!-- Main Card -->
+    <main>
+      <div class="card" role="main">
+
+        <!-- Mode toggle -->
+        <div class="mode-toggle" role="group" aria-label="Cipher mode">
+          <button class="mode-btn active" id="btn-encrypt" onclick="setMode('encrypt')">
+            🔒 Encrypt
+          </button>
+          <button class="mode-btn" id="btn-decrypt" onclick="setMode('decrypt')">
+            🔓 Decrypt
+          </button>
+        </div>
+
+        <!-- Input message -->
+        <div class="field">
+          <label for="input-text">Message</label>
+          <textarea id="input-text" placeholder="Type your message here…" spellcheck="false"
+            aria-label="Input message"></textarea>
+        </div>
+
+        <!-- Shift value -->
+        <div class="field">
+          <label for="shift-number">Shift Value</label>
+          <div class="shift-row">
+            <input type="number" id="shift-number" value="3" min="1" max="25" aria-label="Shift value"
+              oninput="syncSlider(this.value)" />
+            <input type="range" class="shift-slider" id="shift-slider" min="1" max="25" value="3"
+              aria-label="Shift slider" oninput="syncNumber(this.value)" />
+          </div>
+          <div class="shift-label-row">
+            <span>1</span><span>13</span><span>25</span>
+          </div>
+        </div>
+
+        <!-- Run button -->
+        <button class="run-btn" id="run-btn" onclick="runCipher()">
+          🔒 Encrypt Message
+        </button>
+      </div>
+
+      <!-- Output -->
+      <div class="output-card" id="output-card">
+        <div class="output-header">
+          <div class="output-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Result
+          </div>
+          <button class="copy-btn" id="copy-btn" onclick="copyOutput()">
+            📋 Copy
+          </button>
+        </div>
+        <div class="output-text" id="output-text" aria-live="polite"></div>
+      </div>
+
+      <!-- Info strip -->
+      <div class="info-strip">
+        <div class="info-item">
+          <div class="info-icon purple">🔀</div>
+          <div class="info-text">
+            <h3>How it works</h3>
+            <p>Each letter is shifted forward (encrypt) or backward (decrypt) by the chosen value in the alphabet.</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon pink">🔢</div>
+          <div class="info-text">
+            <h3>Shift range</h3>
+            <p>Values 1–25 are valid. A shift of 13 is the well-known ROT13 variant, its own inverse.</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon teal">🔡</div>
+          <div class="info-text">
+            <h3>Case preserved</h3>
+            <p>Uppercase and lowercase letters are shifted independently. Numbers and symbols are left unchanged.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      Built with ♥ · Caesar Cipher ·
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
