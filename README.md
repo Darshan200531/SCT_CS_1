@@ -22,7 +22,7 @@ The Caesar Cipher is one of the oldest and simplest encryption techniques where 
 ---
 
 ## 🛠️ Technologies Used
-- Programming Language: Python
+- Programming Language: JavaScript
 
 ---
 
@@ -50,3 +50,8 @@ Explanation:
 ```bash
 git clone https://github.com/Darshan200531/SCT_CS_1.git
 
+2. Change dircetory:
+
+cd SCT_CS_1
+
+3. Run using clicking upon index.html
